@@ -2,7 +2,7 @@ import express from 'express';
 
 export const app = express();
 
-const port = process.env.port || 3333;
+const port = process.env.port || 4001;
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to accountsService!' });

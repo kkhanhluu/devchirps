@@ -30,6 +30,9 @@
   "projects": {
     "accounts-service": {
       "tags": []
+    },
+    "api-gateway": {
+      "tags": []
     }
   }
 }

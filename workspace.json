@@ -12,8 +12,7 @@
           "options": {
             "outputPath": "dist/apps/accounts-service",
             "main": "apps/accounts-service/src/main.ts",
-            "tsConfig": "apps/accounts-service/tsconfig.app.json",
-            "assets": ["apps/accounts-service/src/assets"]
+            "tsConfig": "apps/accounts-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {

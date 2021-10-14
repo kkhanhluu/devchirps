@@ -1,0 +1,5 @@
+'(apps|libs|tools)/**/*.{js,ts,json}':
+  - yarn run affected:format
+  - yarn run affected:lint
+'Dockerfile':
+  - yarn run lint:dockerfile

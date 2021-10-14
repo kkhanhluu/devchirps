@@ -13,7 +13,7 @@ import express from 'express';
     serviceList: [{ name: 'accounts', url: process.env.ACCOUNTS_SERVICE_URL }],
   });
 
-  const port = process.env.port || 4000;
+  const port = process.env.PORT || 4000;
   const server = new ApolloServer({
     gateway,
   });

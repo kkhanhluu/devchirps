@@ -20,7 +20,15 @@ export async function bootstrap() {
     }
   );
 
-  const server = new ApolloServer({ schema });
+  const server = new ApolloServer({
+    schema,
+    context: ({ req }) => {
+      const user = req.headers.user
+        ? JSON.parse(req.headers.user as string)
+        : null;
+      return { user };
+    },
+  });
 
   return server;
 }

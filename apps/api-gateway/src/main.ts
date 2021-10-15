@@ -1,24 +1,10 @@
-import { ApolloGateway } from '@apollo/gateway';
-import { ApolloServer } from 'apollo-server-express';
-import express from 'express';
+import { boostApolloServer } from './apollo/server';
+import { app } from './app';
 
 (async () => {
-  const app = express();
-
-  app.get('/api', (req, res) => {
-    res.send({ message: 'Welcome to api-gateway!' });
-  });
-
-  const gateway = new ApolloGateway({
-    serviceList: [{ name: 'accounts', url: process.env.ACCOUNTS_SERVICE_URL }],
-  });
-
   const port = process.env.PORT || 4000;
-  const server = new ApolloServer({
-    gateway,
-  });
 
-  await server.start();
+  const server = await boostApolloServer();
   server.applyMiddleware({ app });
 
   app.listen({ port }, () =>

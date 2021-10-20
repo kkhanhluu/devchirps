@@ -5,6 +5,10 @@
     "declaration": true,
     "types": []
   },
-  "include": ["**/*.ts"],
+  "include": [
+    "**/*.ts",
+    "src/lib/getAuth0Token.js",
+    "src/lib/authenticateUser.js"
+  ],
   "exclude": ["**/*.spec.ts"]
 }

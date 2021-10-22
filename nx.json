@@ -34,6 +34,9 @@
     "api-gateway": {
       "tags": []
     },
+    "api-interface": {
+      "tags": []
+    },
     "graphql": {
       "tags": []
     }

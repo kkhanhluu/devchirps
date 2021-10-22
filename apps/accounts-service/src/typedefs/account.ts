@@ -6,7 +6,11 @@ export class Account {
   @Field(() => ID)
   id: string;
   @Field()
-  username: string;
+  name: string;
   @Field()
   email: string;
+  @Field()
+  createdAt: Date;
+  @Field()
+  lastLogin: Date;
 }

@@ -8,6 +8,7 @@ export async function bootstrap() {
     {
       resolvers: [AccountResolver],
       orphanedTypes: [Account],
+      dateScalarMode: 'isoDate',
     },
     {
       Account: {
@@ -23,9 +24,7 @@ export async function bootstrap() {
   const server = new ApolloServer({
     schema,
     context: ({ req }) => {
-      const user = req.headers.user
-        ? JSON.parse(req.headers.user as string)
-        : null;
+      const user = req.headers.user ? JSON.parse(req.headers.user as string) : null;
       return { user };
     },
   });

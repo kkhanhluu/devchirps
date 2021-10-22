@@ -9,14 +9,12 @@ declare global {
   }
 }
 
-console.log(process.env.AUTH0_AUDIENCE, 'AAAAAAA');
-
 export const checkJWt = jwt({
   secret: expressJwtSecret({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 100,
-    jwksUri: `${process.env.AUTH0_ISSUER}.well-known/jkws.json`,
+    jwksUri: `${process.env.AUTH0_ISSUER}.well-known/jwks.json`,
   }),
   audience: process.env.AUTH0_AUDIENCE,
   issuer: process.env.AUTH0_ISSUER,

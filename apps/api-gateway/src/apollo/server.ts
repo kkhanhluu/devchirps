@@ -19,7 +19,7 @@ export async function boostApolloServer() {
     gateway,
     context: ({ req }) => {
       const user = req.user ?? null;
-      return { user, test: 'hello' };
+      return { user };
     },
   });
 

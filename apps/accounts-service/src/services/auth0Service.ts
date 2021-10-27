@@ -62,6 +62,10 @@ export function updatePassword(accountId: string, password: string) {
   return auth0.updateUser({ id: accountId }, { password });
 }
 
+export function deleteUser(accountId: string) {
+  return auth0.deleteUser({ id: accountId });
+}
+
 export function mapAuth0UserToAccount({
   created_at,
   user_id,
@@ -73,7 +77,7 @@ export function mapAuth0UserToAccount({
     id: user_id,
     name,
     email,
-    lastLogin: new Date(last_login),
+    lastLogin: last_login ? new Date(last_login) : null,
     createdAt: new Date(created_at),
   };
 }

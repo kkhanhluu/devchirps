@@ -3,6 +3,7 @@ import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { Context } from '../apollo/context';
 import {
   createUser,
+  deleteUser,
   getUserById,
   getUsers,
   isUserAuthenticated,
@@ -42,6 +43,7 @@ export class AccountResolver {
     @Arg('createAccountInput') { email, password }: CreateAccountInput
   ): Promise<Account> {
     const user = await createUser(email, password);
+    console.log('user', user);
     return mapAuth0UserToAccount(user);
   }
 
@@ -65,5 +67,11 @@ export class AccountResolver {
       return mapAuth0UserToAccount(user);
     }
     throw new UserInputError(`Your password is wrong`);
+  }
+
+  @Mutation(() => Boolean)
+  async deleteAccount(@Arg('accountId') accountId: string): Promise<boolean> {
+    await deleteUser(accountId);
+    return true;
   }
 }

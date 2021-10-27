@@ -11,6 +11,6 @@ export class Account {
   email: string;
   @Field()
   createdAt: Date;
-  @Field()
+  @Field({ nullable: true })
   lastLogin: Date;
 }

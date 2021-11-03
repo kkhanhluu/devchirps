@@ -6,4 +6,9 @@ export interface ContextUser {
   exp: number;
   azp: string;
   scope: string;
+  'https://devchirps.com/user_authorization'?: {
+    groups: string[];
+    roles: string[];
+    permissions: string[];
+  };
 }

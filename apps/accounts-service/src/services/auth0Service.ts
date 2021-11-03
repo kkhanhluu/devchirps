@@ -1,3 +1,15 @@
+import {
+  BLOCK_ANY_ACCOUNT,
+  BLOCK_ANY_CONTENT,
+  EDIT_OWN_ACCOUNT,
+  EDIT_OWN_CONTENT,
+  EDIT_OWN_PROFILE,
+  PROMOTE_ANY_ACCOUNT,
+  READ_ANY_ACCOUNT,
+  READ_ANY_PROFILE,
+  READ_OWN_ACCOUNT,
+  UPLOAD_OWN_MEDIA,
+} from '@devchirps/authorization';
 import { ManagementClient, User } from 'auth0';
 import { request, RequestOptions } from 'https';
 import { Account } from '../typedefs/account';
@@ -17,7 +29,24 @@ export function getUsers() {
 }
 
 export function createUser(email: string, password: string) {
-  return auth0.createUser({ email, password, connection: 'Username-Password-Authentication' });
+  return auth0.createUser({
+    email,
+    password,
+    connection: 'Username-Password-Authentication',
+    app_metadata: {
+      groups: [],
+      roles: ['author'],
+      permissions: [
+        'read:own_account',
+        'edit:own_account',
+        'read:any_profile',
+        'edit:own_profile',
+        'read:any_content',
+        'edit:own_content',
+        'upload:own_media',
+      ],
+    },
+  });
 }
 
 export function isUserAuthenticated(email: string, password: string) {
@@ -72,6 +101,8 @@ export function mapAuth0UserToAccount({
   last_login,
   name,
   email,
+  app_metadata,
+  blocked,
 }: User): Account {
   return {
     id: user_id,
@@ -79,5 +110,48 @@ export function mapAuth0UserToAccount({
     email,
     lastLogin: last_login ? new Date(last_login) : null,
     createdAt: new Date(created_at),
+    isModerator: Boolean(app_metadata?.roles?.includes('moderator')),
+    isBlocked: Boolean(blocked),
   };
+}
+
+export async function updateUserRole(accountId: string) {
+  const authorPermissions = [
+    READ_OWN_ACCOUNT,
+    EDIT_OWN_ACCOUNT,
+    READ_ANY_PROFILE,
+    EDIT_OWN_PROFILE,
+    READ_ANY_ACCOUNT,
+    EDIT_OWN_CONTENT,
+    UPLOAD_OWN_MEDIA,
+  ];
+  const moderatorPermissions = [
+    READ_ANY_ACCOUNT,
+    BLOCK_ANY_ACCOUNT,
+    PROMOTE_ANY_ACCOUNT,
+    BLOCK_ANY_CONTENT,
+  ];
+
+  const user = await auth0.getUser({ id: accountId });
+  const isModerator = user.app_metadata?.roles?.includes('moderator');
+  const updatedRoles = isModerator ? ['author'] : ['moderator'];
+  const updatedPermissions = isModerator
+    ? authorPermissions
+    : authorPermissions.concat(moderatorPermissions);
+
+  return auth0.updateUser(
+    { id: accountId },
+    {
+      app_metadata: {
+        roles: updatedRoles,
+        groups: [],
+        permissions: updatedPermissions,
+      },
+    }
+  );
+}
+
+export async function changeAccountBlockedStatus(accountId: string) {
+  const { blocked } = await auth0.getUser({ id: accountId });
+  return auth0.updateUser({ id: accountId }, { blocked: !blocked });
 }

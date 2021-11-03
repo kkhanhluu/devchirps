@@ -1,0 +1,11 @@
+export const READ_OWN_ACCOUNT = 'read:own_account';
+export const EDIT_OWN_ACCOUNT = 'edit:own_account';
+export const READ_ANY_PROFILE = 'read:any_profile';
+export const EDIT_OWN_PROFILE = 'edit:own_profile';
+export const READ_ANY_CONTENT = 'read:any_content';
+export const EDIT_OWN_CONTENT = 'edit:own_content';
+export const UPLOAD_OWN_MEDIA = 'upload:own_media';
+export const READ_ANY_ACCOUNT = 'read:any_account';
+export const BLOCK_ANY_ACCOUNT = 'block:any_account';
+export const PROMOTE_ANY_ACCOUNT = 'promote:any_account';
+export const BLOCK_ANY_CONTENT = 'block:any_content';

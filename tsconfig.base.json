@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@devchirps/api-interface": ["libs/api-interface/src/index.ts"],
+      "@devchirps/authorization": ["libs/authorization/src/index.ts"],
       "@devchirps/graphql": ["libs/graphql/src/index.ts"]
     }
   },

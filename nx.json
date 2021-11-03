@@ -37,6 +37,9 @@
     "api-interface": {
       "tags": []
     },
+    "authorization": {
+      "tags": []
+    },
     "graphql": {
       "tags": []
     }

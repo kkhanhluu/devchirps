@@ -13,4 +13,8 @@ export class Account {
   createdAt: Date;
   @Field({ nullable: true })
   lastLogin: Date;
+  @Field()
+  isModerator: boolean;
+  @Field()
+  isBlocked: boolean;
 }

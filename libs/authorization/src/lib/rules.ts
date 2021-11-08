@@ -41,7 +41,13 @@ export const permissions = shield(
       accounts: canReadAnyAccount,
       account: or(and(canReadOwnAccount, isReadingOwnAccount), canReadAnyAccount),
     },
-    Mutation: {},
+    Mutation: {
+      deleteAccount: and(canEditOwnAccount, isReadingOwnAccount),
+      updateAccountEmail: and(canEditOwnAccount, isReadingOwnAccount),
+      updateAccountPassword: and(canEditOwnAccount, isReadingOwnAccount),
+      toggleAccountRole: canPromoteAccount,
+      toggleAccountBlockedStatus: canBlockAccount,
+    },
   },
   { debug: process.env.NODE_ENV !== 'production' }
 );

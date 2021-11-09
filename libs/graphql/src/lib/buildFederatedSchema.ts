@@ -3,11 +3,7 @@ import { buildSubgraphSchema, printSubgraphSchema } from '@apollo/subgraph';
 import { addResolversToSchema, GraphQLResolverMap } from 'apollo-graphql';
 import { specifiedDirectives } from 'graphql';
 import gql from 'graphql-tag';
-import {
-  buildSchema,
-  BuildSchemaOptions,
-  createResolversMap,
-} from 'type-graphql';
+import { buildSchema, BuildSchemaOptions, createResolversMap } from 'type-graphql';
 import {
   ExtendsDirective,
   ExternalDirective,
@@ -15,6 +11,7 @@ import {
   ProvidesDirective,
   RequiresDirective,
 } from './federationDirectives';
+import { DateTimeScalar } from './scalars/DateTime';
 
 const federationDirectives = [
   KeyDirective,
@@ -30,11 +27,8 @@ export async function buildFederatedSchema(
 ) {
   const schema = await buildSchema({
     ...options,
-    directives: [
-      ...specifiedDirectives,
-      ...federationDirectives,
-      ...(options.directives || []),
-    ],
+    directives: [...specifiedDirectives, ...federationDirectives, ...(options.directives || [])],
+    scalarsMap: [{ type: Date, scalar: DateTimeScalar }],
     skipCheck: true,
   });
 

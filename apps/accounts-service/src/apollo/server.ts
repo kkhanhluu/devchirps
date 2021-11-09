@@ -2,6 +2,8 @@ import { permissions } from '@devchirps/authorization';
 import { buildFederatedSchema } from '@devchirps/graphql';
 import { ApolloServer } from 'apollo-server-express';
 import { applyMiddleware } from 'graphql-middleware';
+import { auth0 } from '../auth0';
+import { AccountDataSource } from '../datasources/accountDataSource';
 import { AccountResolver } from '../resolvers/account';
 import { Account } from '../typedefs/account';
 
@@ -32,6 +34,9 @@ export async function bootstrap() {
       const user = req.headers.user ? JSON.parse(req.headers.user as string) : null;
       return { user };
     },
+    dataSources: () => ({
+      accountsAPI: new AccountDataSource({ auth0 }),
+    }),
   });
 
   return server;

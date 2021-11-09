@@ -1,9 +1,9 @@
 import { Directive, Field, ID, ObjectType } from 'type-graphql';
 
 @Directive(`@key (fields: "id")`)
-@ObjectType()
+@ObjectType({ description: 'An account is an Auth0 user that provides authentication details' })
 export class Account {
-  @Field(() => ID)
+  @Field(() => ID, { description: 'The unique Auth0 ID associated with the account' })
   id: string;
   @Field()
   name: string;
@@ -13,8 +13,8 @@ export class Account {
   createdAt: Date;
   @Field({ nullable: true })
   lastLogin: Date;
-  @Field()
+  @Field({ description: 'Whether the account has a moderator role' })
   isModerator: boolean;
-  @Field()
+  @Field({ description: 'Whether the account is blocked' })
   isBlocked: boolean;
 }

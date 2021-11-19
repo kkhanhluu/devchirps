@@ -15,7 +15,7 @@ jobs:
           node-version: '16.13.0'
           registry-url: //npm.pkg.github.com/
       - name: Install Packages
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Build
         run: npm run build
       - name: Format
@@ -33,6 +33,6 @@ jobs:
           node-version: '16.13.0'
           registry-url: //npm.pkg.github.com/
       - name: Install Packages
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Test
         run: npm run affected:test

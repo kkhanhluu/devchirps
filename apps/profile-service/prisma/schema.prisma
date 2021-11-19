@@ -9,3 +9,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Profile {
+  id String @id @default(uuid())
+  auth0AccountId String @unique
+  avatar String
+  description String?
+  firstName String 
+  lastName String 
+  userName String
+  follows Follow[] @relation("Follows")
+  followers Follow[] @relation("Followers")
+}
+
+model Follow {
+  id String @id @default(uuid())
+  targetId String
+  target Profile @relation(name: "Follows", fields: [targetId], references: [id])
+  followerId String 
+  follower Profile @relation(name: "Followers", fields: [followerId], references: [id])
+}

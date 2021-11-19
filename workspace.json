@@ -185,8 +185,7 @@
           "options": {
             "outputPath": "dist/apps/profile-service",
             "main": "apps/profile-service/src/main.ts",
-            "tsConfig": "apps/profile-service/tsconfig.app.json",
-            "assets": ["apps/profile-service/src/assets"]
+            "tsConfig": "apps/profile-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {

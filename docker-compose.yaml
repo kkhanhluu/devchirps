@@ -7,12 +7,3 @@ services:
       - POSTGRES_DB=profile-service
     ports:
       - '5432:5432'
-  accounts-service:
-    build:
-      context: ./apps/accounts-service
-      target: dev
-    volumes:
-      - .:/src
-    command: npx nx run accounts-service:serve
-    ports:
-      - '4001:4001'

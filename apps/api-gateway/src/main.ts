@@ -7,7 +7,7 @@ import { app } from './app';
   const server = await boostApolloServer();
   server.applyMiddleware({ app });
 
-  app.listen({ port }, () =>
-    console.log(`Api gateway ready at http://localhost:${port}`)
-  );
+  app.listen({ port }, () => {
+    console.log(`Api gateway ready at http://localhost:${port}`);
+  });
 })();

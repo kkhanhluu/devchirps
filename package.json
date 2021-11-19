@@ -16,7 +16,9 @@
     "affected:lint": "nx affected:lint --fix --parallel --uncommitted",
     "affected:format": "nx format:write --uncommitted",
     "affected:dep-graph": "nx affected:dep-graph",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "prisma:migrate": "npx prisma migrate dev --schema ./apps/profile-service/prisma/schema.prisma --name init",
+    "prisma:studio": "npx prisma studio --schema ./apps/profile-service/prisma/schema.prisma"
   },
   "private": true,
   "dependencies": {

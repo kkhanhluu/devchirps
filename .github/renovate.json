@@ -1,0 +1,57 @@
+{
+  "extends": ["config:base"],
+  "reviewers": ["kkhanhluu"],
+  "reviewersSampleSize": 1,
+  "dependencyDashboard": true,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "groupName": "dependencies (non-major)",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "devDependencies",
+      "addLabels": ["devDependencies"],
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "devDependencies (cd-workflow)",
+      "addLabels": ["devDependencies"],
+      "matchFiles": ["cd.yml"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "prisma (non-major)",
+      "addLabels": ["prisma"],
+      "matchPackagePrefixes": ["prisma"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    },
+    {
+      "groupName": "prisma",
+      "addLabels": ["prisma"],
+      "matchPackagePrefixes": ["prisma"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "groupName": "graphql (non-major)",
+      "addLabels": ["graphql"],
+      "matchPackagePatterns": ["apollo", "graphql"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 8am on Monday"]
+    }
+  ],
+  "schedule": ["before 8am"]
+}

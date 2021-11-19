@@ -1,0 +1,31 @@
+name: CI
+on: push
+jobs:
+  lint:
+    name: Lint & Format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.0'
+          registry-url: //npm.pkg.github.com/
+      - name: Install Packages
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Format
+        run: npm run format
+      - name: Lint
+        run: npm run affected:lint
+  test:
+    - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.13.0'
+          registry-url: //npm.pkg.github.com/
+      - name: Install Packages
+        run: npm ci
+      - name: Test
+        run: npm run affected:test

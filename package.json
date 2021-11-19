@@ -2,6 +2,9 @@
   "name": "devchirps",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "start:dev": "nx run-many --target=serve --all --parallel",
     "build": "nx build",

@@ -5,13 +5,13 @@ import validator from 'validator';
 export const DateTimeScalar = new GraphQLScalarType({
   name: 'DateTime',
   description: 'An ISO 8601-encoded UTC date string.',
-  parseValue: (value) => {
+  parseValue: (value: string) => {
     if (validator.isISO8601(value)) {
       return value;
     }
     throw new ApolloError('DateTime must be a valid ISO 8601 Date string');
   },
-  serialize: (value) => {
+  serialize: (value: string | Date) => {
     if (typeof value !== 'string') {
       value = value.toISOString();
     }

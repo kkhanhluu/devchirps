@@ -27,24 +27,8 @@
       }
     ]
   },
-  "projects": {
-    "accounts-service": {
-      "tags": []
-    },
-    "api-gateway": {
-      "tags": []
-    },
-    "api-interface": {
-      "tags": []
-    },
-    "authorization": {
-      "tags": []
-    },
-    "graphql": {
-      "tags": []
-    },
-    "profile-service": {
-      "tags": []
-    }
-  }
+  "cli": {
+    "defaultCollection": "@nrwl/express"
+  },
+  "defaultProject": "accounts-service"
 }

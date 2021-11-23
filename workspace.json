@@ -49,7 +49,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "api-gateway": {
       "root": "apps/api-gateway",
@@ -106,7 +107,8 @@
             "parallel": false
           }
         }
-      }
+      },
+      "tags": []
     },
     "api-interface": {
       "root": "libs/api-interface",
@@ -128,7 +130,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "authorization": {
       "root": "libs/authorization",
@@ -150,7 +153,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "graphql": {
       "root": "libs/graphql",
@@ -172,7 +176,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "profile-service": {
       "root": "apps/profile-service",
@@ -222,11 +227,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/express"
-  },
-  "defaultProject": "accounts-service"
+  }
 }

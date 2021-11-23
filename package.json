@@ -27,7 +27,7 @@
   "dependencies": {
     "@apollo/gateway": "0.42.1",
     "@apollo/subgraph": "0.1.2",
-    "@prisma/client": "3.4.1",
+    "@prisma/client": "3.5.0",
     "apollo-datasource": "3.3.0",
     "apollo-server-express": "3.4.0",
     "auth0": "2.37.0",
@@ -36,7 +36,7 @@
     "graphql": "15.6.1",
     "graphql-middleware": "6.1.11",
     "graphql-shield": "7.5.0",
-    "jwks-rsa": "2.0.4",
+    "jwks-rsa": "2.0.5",
     "reflect-metadata": "0.1.13",
     "tslib": "2.3.1",
     "type-graphql": "1.1.1",

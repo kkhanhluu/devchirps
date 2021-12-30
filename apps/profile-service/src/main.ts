@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { bootstrap } from '../apollo/server';
+import { bootstrap } from './apollo/server';
 import { app } from './app';
 
 (async () => {

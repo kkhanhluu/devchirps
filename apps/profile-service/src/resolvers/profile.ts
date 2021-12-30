@@ -36,8 +36,9 @@ export class ProfileResolver {
     @Arg('input') input: CreateProfileInput,
     @Ctx() { dataSources: { profileAPI } }: Context
   ) {
-    console.log({ input }, 'AAAA');
     const user = await profileAPI.createProfile(input);
     return user;
   }
+
+  // TODO: add checkViewerFollowsProfile (Chapter 5)
 }

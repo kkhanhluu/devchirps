@@ -1,7 +1,7 @@
 import { UserInputError } from 'apollo-server-express';
-import { Arg, Ctx, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Ctx, ID, Mutation, Query, Resolver } from 'type-graphql';
 import { Context } from '../apollo/context';
-import { CreateProfileInput, Profile } from '../typedefs/profile';
+import { CreateProfileInput, Profile, UpdateProfileInput } from '../typedefs/profile';
 
 @Resolver()
 export class ProfileResolver {
@@ -32,13 +32,24 @@ export class ProfileResolver {
   }
 
   @Mutation(() => Profile, { description: 'Create a new user profile' })
-  async createProfile(
+  createProfile(
     @Arg('input') input: CreateProfileInput,
     @Ctx() { dataSources: { profileAPI } }: Context
   ) {
-    const user = await profileAPI.createProfile(input);
-    return user;
+    return profileAPI.createProfile(input);
   }
 
+  @Mutation(() => Profile, { description: 'Update an existing profile' })
+  updateProfile(
+    @Arg('input') input: UpdateProfileInput,
+    @Ctx() { dataSources: { profileAPI } }: Context
+  ) {
+    return profileAPI.updateProfile(input);
+  }
+
+  @Mutation(() => ID, { description: 'Delete a profile' })
+  deleteProfile(@Arg('id') profileId: string, @Ctx() { dataSources: { profileAPI } }: Context) {
+    return profileAPI.deleteProfile(profileId);
+  }
   // TODO: add checkViewerFollowsProfile (Chapter 5)
 }

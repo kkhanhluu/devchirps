@@ -2,7 +2,7 @@ import { PrismaClient } from '.prisma/client';
 import { DataSource, DataSourceConfig } from 'apollo-datasource';
 import { Context } from '../apollo/context';
 import { prisma } from '../prisma';
-import { CreateProfileInput } from '../typedefs/profile';
+import { CreateProfileInput, UpdateProfileInput } from '../typedefs/profile';
 
 export class ProfileDataSource extends DataSource<Context> {
   context!: Context;
@@ -29,5 +29,14 @@ export class ProfileDataSource extends DataSource<Context> {
     return prisma.profile.create({
       data,
     });
+  }
+
+  updateProfile({ id, ...input }: UpdateProfileInput) {
+    return prisma.profile.update({ where: { id }, data: input });
+  }
+
+  async deleteProfile(profileId: string) {
+    const deletedProfile = await prisma.profile.delete({ where: { id: profileId } });
+    return deletedProfile.id;
   }
 }

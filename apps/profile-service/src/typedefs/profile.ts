@@ -38,3 +38,17 @@ export class CreateProfileInput {
   @Field()
   description?: string;
 }
+
+@InputType({ description: 'Provides data to update an existing profile' })
+export class UpdateProfileInput {
+  @Field(() => ID)
+  id: string;
+  @Field()
+  firstName: string;
+  @Field()
+  lastName: string;
+  @Field()
+  userName: string;
+  @Field()
+  description?: string;
+}

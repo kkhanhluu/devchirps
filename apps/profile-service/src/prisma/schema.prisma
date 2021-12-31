@@ -28,4 +28,5 @@ model Follow {
   target Profile @relation(name: "Follows", fields: [targetId], references: [id])
   followerId String 
   follower Profile @relation(name: "Followers", fields: [followerId], references: [id])
+  @@unique([targetId,followerId])
 }

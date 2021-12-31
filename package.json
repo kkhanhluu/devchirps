@@ -78,6 +78,6 @@
     "webpack-node-externals": "3.0.0"
   },
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} apps/profile-service/src/prisma/seed.ts"
   }
 }

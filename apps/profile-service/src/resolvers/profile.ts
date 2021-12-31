@@ -51,5 +51,6 @@ export class ProfileResolver {
   deleteProfile(@Arg('id') profileId: string, @Ctx() { dataSources: { profileAPI } }: Context) {
     return profileAPI.deleteProfile(profileId);
   }
+
   // TODO: add checkViewerFollowsProfile (Chapter 5)
 }

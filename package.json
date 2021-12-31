@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": "16.13.0"
+    "node": "16.13.1"
   },
   "scripts": {
     "start:dev": "nx run-many --target=serve --all --parallel",
@@ -27,12 +27,12 @@
   "dependencies": {
     "@apollo/gateway": "0.45.0",
     "@apollo/subgraph": "0.1.5",
-    "@prisma/client": "3.5.0",
+    "@prisma/client": "3.7.0",
     "apollo-datasource": "3.3.0",
     "apollo-server-express": "3.5.0",
     "auth0": "2.37.0",
     "class-validator": "0.13.2",
-    "express": "4.17.1",
+    "express": "4.17.2",
     "express-jwt": "6.1.0",
     "graphql": "15.8.0",
     "graphql-middleware": "6.1.13",

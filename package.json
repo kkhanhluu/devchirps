@@ -21,12 +21,14 @@
     "affected:dep-graph": "nx affected:dep-graph",
     "lint-staged": "lint-staged",
     "prisma:migrate": "npx prisma migrate dev --schema ./apps/profile-service/src/prisma/schema.prisma --name init",
-    "prisma:studio": "npx prisma studio --schema ./apps/profile-service/src/prisma/schema.prisma"
+    "prisma:studio": "npx prisma studio --schema ./apps/profile-service/src/prisma/schema.prisma",
+    "prisma:seed": "npx prisma db seed"
   },
   "private": true,
   "dependencies": {
     "@apollo/gateway": "0.45.0",
     "@apollo/subgraph": "0.1.5",
+    "@elastic/elasticsearch": "7.16.0",
     "@prisma/client": "3.7.0",
     "apollo-datasource": "3.3.0",
     "apollo-server-express": "3.5.0",
@@ -56,6 +58,7 @@
     "@nrwl/tao": "13.2.3",
     "@nrwl/workspace": "13.2.3",
     "@types/auth0": "2.34.7",
+    "@types/elasticsearch": "^5.0.40",
     "@types/express": "4.17.13",
     "@types/jest": "27.0.3",
     "@types/node": "16.11.10",

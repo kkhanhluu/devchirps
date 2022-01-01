@@ -7,3 +7,11 @@ services:
       - POSTGRES_DB=profile_service
     ports:
       - '5432:5432'
+  elastic-search:
+    container_name: es
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
+    environment:
+      - discovery.seed_hosts=es
+      - discovery.type=single-node
+    ports:
+      - '9200:9200'

@@ -20,6 +20,15 @@ export class ProfileResolver {
   }
 
   @Query(() => Profile)
+  async searchProfile(@Arg('text') text: string, @Ctx() { dataSources: { profileAPI } }: Context) {
+    const profile = await profileAPI.getProfileByName(text);
+    if (!profile) {
+      throw new UserInputError('Profile does not exist');
+    }
+    return profile;
+  }
+
+  @Query(() => Profile)
   async getProfileByAuth0Id(
     @Arg('auth0Id') auth0Id: string,
     @Ctx() { dataSources: { profileAPI } }: Context

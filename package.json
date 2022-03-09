@@ -28,7 +28,7 @@
   "dependencies": {
     "@apollo/gateway": "0.45.0",
     "@apollo/subgraph": "0.1.5",
-    "@elastic/elasticsearch": "7.16.0",
+    "@elastic/elasticsearch": "8.1.0",
     "@prisma/client": "3.8.1",
     "apollo-datasource": "3.3.0",
     "apollo-server-express": "3.5.0",

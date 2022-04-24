@@ -9,7 +9,7 @@ services:
       - '5432:5432'
   elastic-search:
     container_name: es
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.3
     environment:
       - discovery.seed_hosts=es
       - discovery.type=single-node

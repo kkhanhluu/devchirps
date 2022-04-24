@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": "16.13.2"
+    "node": "16.14.2"
   },
   "scripts": {
     "start:dev": "nx run-many --target=serve --all --parallel",
@@ -28,20 +28,20 @@
   "dependencies": {
     "@apollo/gateway": "0.45.0",
     "@apollo/subgraph": "0.1.5",
-    "@elastic/elasticsearch": "7.16.0",
-    "@prisma/client": "3.8.1",
+    "@elastic/elasticsearch": "7.17.0",
+    "@prisma/client": "3.12.0",
     "apollo-datasource": "3.3.0",
     "apollo-server-express": "3.5.0",
-    "auth0": "2.39.0",
+    "auth0": "2.40.0",
     "class-validator": "0.13.2",
-    "express": "4.17.2",
-    "express-jwt": "6.1.0",
+    "express": "4.17.3",
+    "express-jwt": "6.1.2",
     "graphql": "15.8.0",
     "graphql-middleware": "6.1.13",
     "graphql-shield": "7.5.0",
     "jwks-rsa": "2.0.5",
     "reflect-metadata": "0.1.13",
-    "tslib": "2.3.1",
+    "tslib": "2.4.0",
     "type-graphql": "1.1.1",
     "validator": "13.7.0"
   },
